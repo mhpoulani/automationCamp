@@ -1,32 +1,38 @@
-name: cypress integeration with CI
+name: cypress integration with CI
 on:
- push: master
+  push:
+    branches:
+      - master
 jobs:
- Test-on-chrome:
+  Test-on-chrome:
     runs-on: ubuntu-latest
     steps:
-     - name: Checkout
-    uses: actions/checkout@v7.0.1
-    - name : install dependencies
-    uses: cypress-io/github-action@v5.0.0
-    with:
-     runTests: false
-    - name: Run tests
-    uses: cypress-io/github-action@v5.0.0
-    with: 
-      command: "npm run cy:test"
-    - name : Upload video
-      uses: actions/upload-artifact@v7.0.2
-      if: always()
-      with:
-         name: cypress-video-chrome
-         path:"${{github.workspace}}/cypress/videos"
-     -name: upload screenshots
-        uses: actions/upload-artifact@v7.0.2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        uses: cypress-io/github-action@v6
+        with:
+          runTests: false
+
+      - name: Run tests
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run cy:test
+
+      - name: Upload video
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-video-chrome
+          path: ${{ github.workspace }}/cypress/videos
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshot-chrome
-          path: "${{github.workspace}}/cypress/screenshots"
+          path: ${{ github.workspace }}/cypress/screenshots
 
 
      
