@@ -33,7 +33,3 @@ jobs:
         with:
           name: cypress-screenshot-chrome
           path: ${{ github.workspace }}/cypress/screenshots
-
-
-     
-    
