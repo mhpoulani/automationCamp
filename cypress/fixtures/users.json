@@ -1,0 +1,12 @@
+{
+  "user1": {
+    "firstName": "Tom",
+    "lastName": "Hardy",
+    "gender": "male"
+  },
+  "user2": {
+    "firstName": "Alisha",
+    "lastName": "Hardy",
+    "gender": "female"
+  }
+}
