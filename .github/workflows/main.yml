@@ -2,7 +2,7 @@ name: cypress integration with CI
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   Test-on-chrome:
     runs-on: ubuntu-latest
